@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const db = require('../../db');
+const log = require('../../log');
 
 router.post('/add', db.checkDeviceid, (req, res)=>{
   if(req.body['device_id']){
@@ -10,6 +11,7 @@ router.post('/add', db.checkDeviceid, (req, res)=>{
     } else{
       db.connection.query(`INSERT INTO user (device_id) VALUES ('${req.body['device_id']}');`, (err, result)=>{
         if(err){
+          log.err(err);
           res.status(503).send('db down\n')
         } else{
           res.send('ok saved.\n');

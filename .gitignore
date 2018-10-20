@@ -1,5 +1,8 @@
 #node_modules
 node_modules/
 
-#history-log
-history-log/*.mgcb.history
+#player-history
+player-history/*.mgcb.history
+
+#log
+log/*.log

@@ -1,0 +1,13 @@
+curl localhost:8083/history \
+-X PUT \
+--header "Content-Type: application/json" \
+--data '{"device_id": "test", "data": "some string for test"}'
+
+curl https://magcb.club/magic-cube/history \
+-X PUT \
+--header "Content-Type: application/json" \
+--data '{"device_id": "test", "data": "some string for test"}'
+
+
+curl localhost:8083/history/?device_id=test
+curl https://magcb.club/magic-cube/history/?device_id=test

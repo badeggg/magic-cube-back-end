@@ -1,0 +1,7 @@
+curl localhost:8083/user/add  \
+-X POST \
+--data "device_id=test"
+
+curl https://magcb.club/magic-cube/user/add  \
+-X POST \
+--data "device_id=test"

@@ -4,12 +4,12 @@ const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 
-const historyPath = path.resolve(__dirname, '../../history-log');
+const historyPath = path.resolve(__dirname, '../../../player-history');
 const historySuffix = '.mgcb.history';
 
 router.route('/')
   .get(checkDeviceid, (req, res)=>{
-    if(req.body['device_id']){
+    if(res.checkDeviceIdRst.deviceIdToCheck){
       if(res.checkDeviceIdRst.error){
         res.status(503).send('err: ' + res.checkDeviceIdRst.error + '\n');
       } else if(res.checkDeviceIdRst.inDb){
@@ -29,7 +29,7 @@ router.route('/')
       res.status(422).send('err: device_id is required\n');
     }
   })
-  .post(checkDeviceid, (req, res)=>{
+  .put(checkDeviceid, (req, res)=>{
     if(req.body['device_id'] && req.body['data']){
       if(res.checkDeviceIdRst.error){
         res.status(503).send('err: ' + res.checkDeviceIdRst.error + '\n');
