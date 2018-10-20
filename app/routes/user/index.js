@@ -11,8 +11,8 @@ router.post('/add', db.checkDeviceid, (req, res)=>{
     } else{
       db.connection.query(`INSERT INTO user (device_id) VALUES ('${req.body['device_id']}');`, (err, result)=>{
         if(err){
-          log.err(err);
-          res.status(503).send('db down\n')
+          log.err({msg: 'db down', dbErr: err});
+          res.status(503).send('db down\n');
         } else{
           res.send('ok saved.\n');
         }

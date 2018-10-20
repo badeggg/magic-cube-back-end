@@ -10,8 +10,9 @@ function check(req, res, next){
     res.checkDeviceIdRst.deviceIdToCheck = deviceId;
     connection.query(`SELECT device_id, id FROM user WHERE device_id='${deviceId}'`, (err, result)=>{
       if(err) {
-        log.err(err);
-        res.checkDeviceIdRst.error = 'db down'; next()
+        log.err({msg: 'db down', dbErr: err});
+        res.checkDeviceIdRst.error = 'db down';
+        next();
       };
       if(result && result.length > 0){
         res.checkDeviceIdRst.id = result[0].id;

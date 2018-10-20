@@ -19,7 +19,7 @@ router.route('/')
           if(err){
             res.status(500).send('err: failed to read history file\n');
           } else{
-            res.json(data.toString());
+            res.send(data.toString());
           }
         });
       } else{
@@ -36,7 +36,7 @@ router.route('/')
       } else if(res.checkDeviceIdRst.inDb){
         const id = res.checkDeviceIdRst.id.toString();
         const md5Sum = crypto.createHash('md5').update(id).digest("hex");
-        fs.writeFile(path.resolve(historyPath, md5Sum+historySuffix), JSON.stringify(req.body['data']), (err)=>{
+        fs.writeFile(path.resolve(historyPath, md5Sum+historySuffix), req.body['data'], (err)=>{
           if(err){
             res.status(500).send('err: failed to save history file\n');
           } else{
