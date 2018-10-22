@@ -9,7 +9,7 @@ router.post('/add', db.checkDeviceid, (req, res)=>{
     } else if(res.checkDeviceIdRst.inDb){
       res.send('already exist.\n');
     } else{
-      db.connection.query(`INSERT INTO user (device_id) VALUES ('${req.body['device_id']}');`, (err, result)=>{
+      db.pool.query(`INSERT INTO user (device_id) VALUES ('${req.body['device_id']}');`, (err, result)=>{
         if(err){
           log.err({msg: 'db down', dbErr: err});
           res.status(503).send('db down\n');

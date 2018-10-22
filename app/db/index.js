@@ -1,3 +1,5 @@
 const connection = require('./connection.js');
 const checkDeviceid = require('./checkDeviceId');
-module.exports = {connection, checkDeviceid};
+const pool = require('./pool');
+
+module.exports = {connection, checkDeviceid, pool};
