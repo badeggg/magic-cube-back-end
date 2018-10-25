@@ -6,3 +6,6 @@ player-history/*.mgcb.history
 
 #log
 log/*.log
+
+#db config
+app/*db/config.js
